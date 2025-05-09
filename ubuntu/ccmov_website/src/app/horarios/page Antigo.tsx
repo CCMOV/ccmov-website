@@ -1,9 +1,6 @@
 import React from 'react';
 
-// A constante scheduleData abaixo é do arquivo original do usuário.
-// Embora a tabela seja renderizada de forma fixa no JSX abaixo,
-// manter essa constante pode ser útil se o usuário a utiliza para outros fins
-// ou planeja dinamizar a tabela no futuro.
+// Example data - replace with actual schedule
 const scheduleData = {
   monday: [
     { time: '08:00 - 09:00', activity: 'Pilates Solo', instructor: 'Ana' },
@@ -46,6 +43,18 @@ const scheduleData = {
   sunday: [], // Closed or special events
 };
 
+type DayKey = keyof typeof scheduleData;
+
+const daysOfWeek: { key: DayKey; name: string }[] = [
+  { key: 'monday', name: 'Segunda-feira' },
+  { key: 'tuesday', name: 'Terça-feira' },
+  { key: 'wednesday', name: 'Quarta-feira' },
+  { key: 'thursday', name: 'Quinta-feira' },
+  { key: 'friday', name: 'Sexta-feira' },
+  { key: 'saturday', name: 'Sábado' },
+  { key: 'sunday', name: 'Domingo' },
+];
+
 export default function HorariosPage() {
   return (
     <div className="space-y-12">
@@ -67,91 +76,82 @@ export default function HorariosPage() {
                 <th className="py-3 px-4 text-left font-semibold">Quinta</th>
                 <th className="py-3 px-4 text-left font-semibold">Sexta</th>
                 <th className="py-3 px-4 text-left font-semibold">Sábado</th>
+                {/* Omitting Sunday for this example layout */}
               </tr>
             </thead>
             <tbody className="text-ccmov-text">
+              {/* Example Row Structure - A more dynamic approach would map through time slots */}
+              {/* This is a simplified visual representation */}
               <tr className="border-b border-gray-200 hover:bg-gray-50">
                 <td className="py-3 px-4 font-medium">07:00 - 08:00</td>
                 <td></td>
-                <td className="text-sm">Pilates Ap.</td>
+                <td className="text-sm">Pilates Ap. <span className="text-xs text-gray-500">(Sofia)</span></td>
                 <td></td>
-                <td className="text-sm">Pilates Ap.</td>
+                <td className="text-sm">Pilates Ap. <span className="text-xs text-gray-500">(Sofia)</span></td>
                 <td></td>
                 <td></td>
               </tr>
               <tr className="border-b border-gray-200 hover:bg-gray-50">
                 <td className="py-3 px-4 font-medium">08:00 - 09:00</td>
-                <td className="text-sm">Pilates Solo</td>
+                <td className="text-sm">Pilates Solo <span className="text-xs text-gray-500">(Ana)</span></td>
                 <td></td>
-                <td className="text-sm">Pilates Solo</td>
+                <td className="text-sm">Pilates Solo <span className="text-xs text-gray-500">(Ana)</span></td>
                 <td></td>
-                <td className="text-sm">Pilates Solo</td>
+                <td className="text-sm">Pilates Solo <span className="text-xs text-gray-500">(Ana)</span></td>
                 <td></td>
               </tr>
               <tr className="border-b border-gray-200 hover:bg-gray-50">
                 <td className="py-3 px-4 font-medium">09:00 - 10:00</td>
-                <td className="text-sm">Pilates Ap.</td>
+                <td className="text-sm">Pilates Ap. <span className="text-xs text-gray-500">(Sofia)</span></td>
                 <td></td>
-                <td className="text-sm">Pilates Ap.</td>
+                <td className="text-sm">Pilates Ap. <span className="text-xs text-gray-500">(Sofia)</span></td>
                 <td></td>
-                <td className="text-sm">Pilates Ap.</td>
-                <td className="text-sm">Pilates Solo (Todos os Níveis)</td>
+                <td className="text-sm">Pilates Ap. <span className="text-xs text-gray-500">(Sofia)</span></td>
+                <td className="text-sm">Pilates Solo <span className="text-xs text-gray-500">(Ana)</span></td>
               </tr>
                <tr className="border-b border-gray-200 hover:bg-gray-50">
                 <td className="py-3 px-4 font-medium">10:00 - 11:00</td>
                 <td></td>
-                <td className="text-sm">Dança Cont.</td>
+                <td className="text-sm">Dança Cont. <span className="text-xs text-gray-500">(Mariana)</span></td>
                 <td></td>
-                <td className="text-sm">Dança Cont.</td>
+                <td className="text-sm">Dança Cont. <span className="text-xs text-gray-500">(Mariana)</span></td>
                 <td></td>
-                 <td className="text-sm">Workshop*</td>
+                 <td className="text-sm">Workshop* <span className="text-xs text-gray-500">(Convidado)</span></td>
               </tr>
+              {/* ... Add more time slots similarly ... */}
                <tr className="border-b border-gray-200 hover:bg-gray-50">
                 <td className="py-3 px-4 font-medium">17:00 - 18:00</td>
-                <td className="text-sm">Ballet Ad. Ini.</td>
+                <td className="text-sm">Ballet Ad. Ini. <span className="text-xs text-gray-500">(Clara)</span></td>
                 <td></td>
-                <td className="text-sm">Ballet Ad. Int.</td>
+                <td className="text-sm">Ballet Ad. Int. <span className="text-xs text-gray-500">(Clara)</span></td>
                 <td></td>
-                <td className="text-sm">Danças Urbanas</td>
+                <td className="text-sm">Danças Urbanas <span className="text-xs text-gray-500">(Bruno)</span></td>
                 <td></td>
               </tr>
                <tr className="border-b border-gray-200 hover:bg-gray-50">
                 <td className="py-3 px-4 font-medium">18:00 - 19:00</td>
-                <td className="text-sm">Jazz Dance</td>
-                 <td className="text-sm">Pilates Ap.</td>
-                <td className="text-sm">Jazz Dance</td>
-                 <td className="text-sm">Pilates Ap.</td>
-                <td className="text-sm">Ritmos Fitness</td>
+                <td className="text-sm">Jazz Dance <span className="text-xs text-gray-500">(Lucas)</span></td>
+                 <td className="text-sm">Pilates Ap. <span className="text-xs text-gray-500">(Pedro)</span></td>
+                <td className="text-sm">Jazz Dance <span className="text-xs text-gray-500">(Lucas)</span></td>
+                 <td className="text-sm">Pilates Ap. <span className="text-xs text-gray-500">(Pedro)</span></td>
+                <td className="text-sm">Ritmos Fitness <span className="text-xs text-gray-500">(Rita)</span></td>
                 <td></td>
               </tr>
                <tr className="border-b border-gray-200 hover:bg-gray-50">
                 <td className="py-3 px-4 font-medium">19:00 - 20:00</td>
-                <td className="text-sm">Pilates Solo</td>
-                <td className="text-sm">Zumba</td>
-                <td className="text-sm">Pilates Solo</td>
-                <td className="text-sm">Zumba</td>
+                <td className="text-sm">Pilates Solo <span className="text-xs text-gray-500">(Ana)</span></td>
+                <td className="text-sm">Zumba <span className="text-xs text-gray-500">(Rita)</span></td>
+                <td className="text-sm">Pilates Solo <span className="text-xs text-gray-500">(Ana)</span></td>
+                <td className="text-sm">Zumba <span className="text-xs text-gray-500">(Rita)</span></td>
                 <td></td>
                 <td></td>
               </tr>
                <tr className="border-b border-gray-200 hover:bg-gray-50">
                 <td className="py-3 px-4 font-medium">20:00 - 21:00</td>
                 <td></td>
-                <td className="text-sm">Dança de Salão</td>
+                <td className="text-sm">Dança de Salão <span className="text-xs text-gray-500">(Carlos)</span></td>
                 <td></td>
-                <td className="text-sm">Dança de Salão</td>
-                <td></td>
-                <td></td>
-              </tr>
-              {/* Nova linha para 21:00 - 22:00 */}
-              <tr className="border-b border-gray-200 hover:bg-gray-50">
-                <td className="py-3 px-4 font-medium">21:00 - 22:00</td>
-                <td className="text-sm">
-                  <div>Aula Exemplo 1</div>
-                  <div>Aula Exemplo 2</div>
-                </td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td className="text-sm">Dança de Salão <span className="text-xs text-gray-500">(Carlos)</span></td>
                 <td></td>
                 <td></td>
               </tr>
