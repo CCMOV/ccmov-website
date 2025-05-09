@@ -1,50 +1,99 @@
 import React from 'react';
 
-// A constante scheduleData abaixo é do arquivo original do usuário.
-// Embora a tabela seja renderizada de forma fixa no JSX abaixo,
-// manter essa constante pode ser útil se o usuário a utiliza para outros fins
-// ou planeja dinamizar a tabela no futuro.
 const scheduleData = {
   monday: [
-    { time: '08:00 - 09:00', activity: 'Pilates Solo', instructor: 'Ana' },
-    { time: '09:00 - 10:00', activity: 'Pilates Aparelhos', instructor: 'Sofia' },
-    { time: '17:00 - 18:00', activity: 'Ballet Adulto Iniciante', instructor: 'Clara' },
-    { time: '18:00 - 19:00', activity: 'Jazz Dance', instructor: 'Lucas' },
-    { time: '19:00 - 20:00', activity: 'Pilates Solo', instructor: 'Ana' },
+    { time: '07:00', activity: 'Pilates' },
+    { time: '08:00', activity: 'Pilates' },
+    { time: '09:00', activity: 'Pilates' },
+    { time: '10:00', activity: 'Pilates' },
+    { time: '17:00', activity: 'Pilates' },
+    { time: '17:00', activity: 'Dança de Salão (Iniciado)' },
+    { time: '18:00', activity: 'Pilates' },
+    { time: '18:00', activity: 'Tango (Iniciante)' },
+    { time: '18:00', activity: 'Dança do Ventre (Iniciante)' },
+    { time: '19:00', activity: 'Pilates' },
+    { time: '19:00', activity: 'Sertanejo (Iniciante)' },
+    { time: '19:00', activity: 'Dança do Ventre (Básico I)' },
+    { time: '20:00', activity: 'Pilates' },
+    { time: '20:00', activity: 'Zouk (Iniciante)' },
   ],
   tuesday: [
-    { time: '07:00 - 08:00', activity: 'Pilates Aparelhos', instructor: 'Sofia' },
-    { time: '10:00 - 11:00', activity: 'Dança Contemporânea', instructor: 'Mariana' },
-    { time: '18:00 - 19:00', activity: 'Pilates Aparelhos', instructor: 'Pedro' },
-    { time: '19:00 - 20:00', activity: 'Zumba', instructor: 'Rita' },
-    { time: '20:00 - 21:00', activity: 'Dança de Salão', instructor: 'Carlos' },
+    { time: '07:00', activity: 'Pilates' },
+    { time: '08:00', activity: 'Pilates' },
+    { time: '09:00', activity: 'Pilates' },
+    { time: '10:00', activity: 'Pilates' },
+    { time: '17:00', activity: 'Pilates' },
+    { time: '17:00', activity: 'Dança de Salão (Iniciante)' },
+    { time: '18:00', activity: 'Pilates' },
+    { time: '18:00', activity: 'Salsa (Iniciante)' },
+    { time: '18:00', activity: 'Dança do Ventre (Iniciante)' },
+    { time: '19:00', activity: 'Pilates' },
+    { time: '19:00', activity: 'Bachata (Iniciado)' },
+    { time: '19:00', activity: 'Dança do Ventre (Básico I)' },
+    { time: '20:00', activity: 'Pilates' },
+    { time: '20:00', activity: 'Tango (Iniciante)' },
+    { time: '21:00', activity: 'Pilates' },
+    { time: '21:00', activity: 'Vals e Milonga (Iniciante)' },
   ],
   wednesday: [
-    { time: '08:00 - 09:00', activity: 'Pilates Solo', instructor: 'Ana' },
-    { time: '09:00 - 10:00', activity: 'Pilates Aparelhos', instructor: 'Sofia' },
-    { time: '17:00 - 18:00', activity: 'Ballet Adulto Intermediário', instructor: 'Clara' },
-    { time: '18:00 - 19:00', activity: 'Jazz Dance', instructor: 'Lucas' },
-    { time: '19:00 - 20:00', activity: 'Pilates Solo', instructor: 'Ana' },
+    { time: '07:00', activity: 'Pilates' },
+    { time: '08:00', activity: 'Pilates' },
+    { time: '09:00', activity: 'Pilates' },
+    { time: '10:00', activity: 'Pilates' },
+    { time: '17:00', activity: 'Pilates' },
+    { time: '18:00', activity: 'Pilates' },
+    { time: '18:00', activity: 'Forró (Iniciante)' },
+    { time: '18:00', activity: 'Ballet (Infantil)' },
+    { time: '19:00', activity: 'Pilates' },
+    { time: '19:00', activity: 'Samba de Gafieira (Iniciado)' },
+    { time: '20:00', activity: 'Pilates' },
+    { time: '20:00', activity: 'Bolero (Intermediário)' },
+    { time: '21:00', activity: 'Pilates' },
+    { time: '21:00', activity: 'Tango (Intermediário)' },
   ],
   thursday: [
-    { time: '07:00 - 08:00', activity: 'Pilates Aparelhos', instructor: 'Sofia' },
-    { time: '10:00 - 11:00', activity: 'Dança Contemporânea', instructor: 'Mariana' },
-    { time: '18:00 - 19:00', activity: 'Pilates Aparelhos', instructor: 'Pedro' },
-    { time: '19:00 - 20:00', activity: 'Zumba', instructor: 'Rita' },
-    { time: '20:00 - 21:00', activity: 'Dança de Salão', instructor: 'Carlos' },
+    { time: '07:00', activity: 'Pilates' },
+    { time: '08:00', activity: 'Pilates' },
+    { time: '09:00', activity: 'Pilates' },
+    { time: '10:00', activity: 'Pilates' },
+    { time: '17:00', activity: 'Pilates' },
+    { time: '17:00', activity: 'Bachata e Forró (Iniciado)' },
+    { time: '18:00', activity: 'Pilates' },
+    { time: '18:00', activity: 'Bolero (Intermediário)' },
+    { time: '19:00', activity: 'Pilates' },
+    { time: '19:00', activity: 'Samba (Iniciante)' },
+    { time: '20:00', activity: 'Pilates' },
+    { time: '21:00', activity: 'Pilates' },
   ],
   friday: [
-    { time: '08:00 - 09:00', activity: 'Pilates Solo', instructor: 'Ana' },
-    { time: '09:00 - 10:00', activity: 'Pilates Aparelhos', instructor: 'Sofia' },
-    { time: '17:00 - 18:00', activity: 'Danças Urbanas', instructor: 'Bruno' },
-    { time: '18:00 - 19:00', activity: 'Ritmos Fitness', instructor: 'Rita' },
+    { time: '07:00', activity: 'Pilates' },
+    { time: '08:00', activity: 'Pilates' },
+    { time: '09:00', activity: 'Pilates' },
+    { time: '10:00', activity: 'Pilates' },
+    { time: '17:00', activity: 'Pilates' },
+    { time: '18:00', activity: 'Pilates' },
+    { time: '19:00', activity: 'Pilates' },
+    { time: '20:00', activity: 'Pilates' },
+    { time: '21:00', activity: 'Pilates' },
   ],
   saturday: [
-    { time: '09:00 - 10:00', activity: 'Pilates Solo (Todos os Níveis)', instructor: 'Ana' },
-    { time: '10:00 - 11:30', activity: 'Workshop Especial (Variável)', instructor: 'Convidado' },
+    { time: '13:00', activity: 'Samba de Gafieira (Iniciante)' },
+    { time: '14:00', activity: 'Zouk e Forró (Iniciante)' },
   ],
-  sunday: [], // Closed or special events
+  sunday: [],
 };
+
+type DayKey = keyof typeof scheduleData;
+
+const daysOfWeek: { key: DayKey; name: string }[] = [
+  { key: 'monday', name: 'Segunda-feira' },
+  { key: 'tuesday', name: 'Terça-feira' },
+  { key: 'wednesday', name: 'Quarta-feira' },
+  { key: 'thursday', name: 'Quinta-feira' },
+  { key: 'friday', name: 'Sexta-feira' },
+  { key: 'saturday', name: 'Sábado' },
+  { key: 'sunday', name: 'Domingo' },
+];
 
 export default function HorariosPage() {
   return (
@@ -61,106 +110,33 @@ export default function HorariosPage() {
             <thead className="bg-ccmov-darkBlue text-white">
               <tr>
                 <th className="py-3 px-4 text-left font-semibold">Horário</th>
-                <th className="py-3 px-4 text-left font-semibold">Segunda</th>
-                <th className="py-3 px-4 text-left font-semibold">Terça</th>
-                <th className="py-3 px-4 text-left font-semibold">Quarta</th>
-                <th className="py-3 px-4 text-left font-semibold">Quinta</th>
-                <th className="py-3 px-4 text-left font-semibold">Sexta</th>
-                <th className="py-3 px-4 text-left font-semibold">Sábado</th>
+                {daysOfWeek.slice(0, 6).map(day => (
+                  <th key={day.key} className="py-3 px-4 text-left font-semibold">{day.name}</th>
+                ))}
               </tr>
             </thead>
             <tbody className="text-ccmov-text">
-              <tr className="border-b border-gray-200 hover:bg-gray-50">
-                <td className="py-3 px-4 font-medium">07:00 - 08:00</td>
-                <td></td>
-                <td className="text-sm">Pilates Ap.</td>
-                <td></td>
-                <td className="text-sm">Pilates Ap.</td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr className="border-b border-gray-200 hover:bg-gray-50">
-                <td className="py-3 px-4 font-medium">08:00 - 09:00</td>
-                <td className="text-sm">Pilates Solo</td>
-                <td></td>
-                <td className="text-sm">Pilates Solo</td>
-                <td></td>
-                <td className="text-sm">Pilates Solo</td>
-                <td></td>
-              </tr>
-              <tr className="border-b border-gray-200 hover:bg-gray-50">
-                <td className="py-3 px-4 font-medium">09:00 - 10:00</td>
-                <td className="text-sm">Pilates Ap.</td>
-                <td></td>
-                <td className="text-sm">Pilates Ap.</td>
-                <td></td>
-                <td className="text-sm">Pilates Ap.</td>
-                <td className="text-sm">Pilates Solo (Todos os Níveis)</td>
-              </tr>
-               <tr className="border-b border-gray-200 hover:bg-gray-50">
-                <td className="py-3 px-4 font-medium">10:00 - 11:00</td>
-                <td></td>
-                <td className="text-sm">Dança Cont.</td>
-                <td></td>
-                <td className="text-sm">Dança Cont.</td>
-                <td></td>
-                 <td className="text-sm">Workshop*</td>
-              </tr>
-               <tr className="border-b border-gray-200 hover:bg-gray-50">
-                <td className="py-3 px-4 font-medium">17:00 - 18:00</td>
-                <td className="text-sm">Ballet Ad. Ini.</td>
-                <td></td>
-                <td className="text-sm">Ballet Ad. Int.</td>
-                <td></td>
-                <td className="text-sm">Danças Urbanas</td>
-                <td></td>
-              </tr>
-               <tr className="border-b border-gray-200 hover:bg-gray-50">
-                <td className="py-3 px-4 font-medium">18:00 - 19:00</td>
-                <td className="text-sm">Jazz Dance</td>
-                 <td className="text-sm">Pilates Ap.</td>
-                <td className="text-sm">Jazz Dance</td>
-                 <td className="text-sm">Pilates Ap.</td>
-                <td className="text-sm">Ritmos Fitness</td>
-                <td></td>
-              </tr>
-               <tr className="border-b border-gray-200 hover:bg-gray-50">
-                <td className="py-3 px-4 font-medium">19:00 - 20:00</td>
-                <td className="text-sm">Pilates Solo</td>
-                <td className="text-sm">Zumba</td>
-                <td className="text-sm">Pilates Solo</td>
-                <td className="text-sm">Zumba</td>
-                <td></td>
-                <td></td>
-              </tr>
-               <tr className="border-b border-gray-200 hover:bg-gray-50">
-                <td className="py-3 px-4 font-medium">20:00 - 21:00</td>
-                <td></td>
-                <td className="text-sm">Dança de Salão</td>
-                <td></td>
-                <td className="text-sm">Dança de Salão</td>
-                <td></td>
-                <td></td>
-              </tr>
-              {/* Nova linha para 21:00 - 22:00 */}
-              <tr className="border-b border-gray-200 hover:bg-gray-50">
-                <td className="py-3 px-4 font-medium">21:00 - 22:00</td>
-                <td className="text-sm">
-                  <div>Aula Exemplo 1</div>
-                  <div>Aula Exemplo 2</div>
-                </td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
+              {[...new Set(Object.values(scheduleData).flat().map(item => item.time))]
+                .sort()
+                .map(time => (
+                  <tr key={time} className="border-b border-gray-200 hover:bg-gray-50">
+                    <td className="py-3 px-4 font-medium">{time}</td>
+                    {daysOfWeek.slice(0, 6).map(day => {
+                      const entries = scheduleData[day.key].filter(entry => entry.time === time);
+                      return (
+                        <td key={day.key} className="text-sm py-3 px-4 space-y-1">
+                          {entries.map((entry, i) => (
+                            <div key={i}>{entry.activity}</div>
+                          ))}
+                        </td>
+                      );
+                    })}
+                  </tr>
+                ))}
             </tbody>
           </table>
         </div>
-         <p className="text-xs text-gray-500 mt-4">*Workshops de Sábado podem ter duração e horários variáveis. Consulte a programação.</p>
       </section>
     </div>
   );
 }
-
