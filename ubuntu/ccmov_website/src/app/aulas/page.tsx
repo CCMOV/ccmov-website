@@ -17,14 +17,27 @@ export default function AulasPage() {
             <p className="text-ccmov-text mb-4 leading-relaxed">
               Liberte sua expressão e energia com nossas aulas de dança! Oferecemos uma variedade de estilos para todos os gostos e níveis, desde iniciantes até avançados. A dança é uma forma divertida e eficaz de melhorar o condicionamento físico, a coordenação motora, a flexibilidade e o bem-estar emocional.
             </p>
-            <h4 className="font-semibold text-ccmov-darkBlue mb-2">Estilos Oferecidos (Exemplos):</h4>
+            <h4 className="font-semibold text-ccmov-darkBlue mb-2">Estilos Oferecidos:</h4>
             <ul className="list-disc list-inside text-ccmov-text space-y-1 mb-4">
+              <li>Bolero</li>
+              <li>Forró</li>
+              <li>Samba de Gafieira</li>
+              <li>Samba Rock</li>
+              <li>Rock Soltinho</li>
+              <li>Zouk</li>
+              <li>Salsa</li>
+              <li>Bachata</li>
+              <li>Sertanejo Universitário</li>
+              <li>Vanera Paulista</li>
+              <li>Tango</li>
+              <li>Tango Vals</li>
+              <li>Milonga</li>
+              <li>Ritmos</li>
+              <li>Dança do Ventre</li>
               <li>Ballet Clássico (Infantil e Adulto)</li>
               <li>Jazz Dance</li>
               <li>Dança Contemporânea</li>
-              <li>Danças Urbanas / Hip Hop</li>
-              <li>Dança de Salão</li>
-              <li>Zumba / Ritmos Fitness</li>
+              <li>Danças Urbanas</li>
             </ul>
             <p className="text-ccmov-text leading-relaxed">
               Nossos instrutores experientes criam um ambiente positivo e encorajador, ajudando você a desenvolver sua técnica e a encontrar a alegria de dançar. Venha fazer uma aula experimental!
