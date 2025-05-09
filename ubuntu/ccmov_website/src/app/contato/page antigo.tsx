@@ -46,10 +46,6 @@ export default function ContatoPage() {
     // Add actual form submission logic here if backend is implemented
   };
 
-  const mapAddress = "Rua Humberto I, 440, Vila Mariana, São Paulo - SP, 04018-031";
-  const encodedMapAddress = encodeURIComponent(mapAddress);
-  const googleMapsEmbedUrl = `https://www.google.com/maps/embed/v1/place?q=${encodedMapAddress}&zoom=17`; // Adjusted zoom level
-
   return (
     <div className="space-y-12">
       <section className="text-center pt-8 pb-12 bg-gradient-to-b from-ccmov-blue/10 to-white">
@@ -64,17 +60,9 @@ export default function ContatoPage() {
           <div>
             <h3 className="font-semibold text-ccmov-darkBlue mb-1">Endereço:</h3>
             <p className="text-ccmov-text">Rua Humberto I, 440<br />Vila Mariana, São Paulo - SP<br />CEP: 04018-031</p>
-            {/* Google Maps Embed */}
-            <div className="mt-4 w-full h-80 md:h-96 rounded-md overflow-hidden shadow-lg"> {/* Increased height and added shadow */}
-              <iframe
-                src={googleMapsEmbedUrl}
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen={true}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              ></iframe>
+            {/* Placeholder for Map */}
+            <div className="mt-4 w-full h-64 bg-gray-200 rounded-md flex items-center justify-center text-gray-500">
+              [Mapa Interativo Aqui - Ex: Google Maps Embed]
             </div>
           </div>
           <div>
