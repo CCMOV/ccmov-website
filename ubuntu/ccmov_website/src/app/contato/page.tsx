@@ -46,9 +46,15 @@ export default function ContatoPage() {
     // Add actual form submission logic here if backend is implemented
   };
 
-  const mapAddress = "Rua Humberto I, 440, Vila Mariana, São Paulo - SP, 04018-031";
-  const encodedMapAddress = encodeURIComponent(mapAddress);
-  const googleMapsEmbedUrl = `https://www.google.com/maps/embed/v1/place?q=${encodedMapAddress}&zoom=17`; // Adjusted zoom level
+  // OpenStreetMap Embed URL for Rua Humberto I, 440, Vila Mariana, São Paulo - SP
+  // Coordinates approx: Lat: -23.5841, Lon: -46.6351
+  const osmLat = -23.5841;
+  const osmLon = -46.6351;
+  const osmZoom = 17; // Zoom level, 18 is closer, 16 is further
+  // Calculate bounding box for a reasonable view around the marker
+  const delta = 0.004; // Adjust for desired view area
+  const osmBbox = `${osmLon - delta},${osmLat - delta / 2},${osmLon + delta},${osmLat + delta / 2}`;
+  const openStreetMapEmbedUrl = `https://www.openstreetmap.org/export/embed.html?bbox=${osmBbox}&layer=mapnik&marker=${osmLat},${osmLon}`;
 
   return (
     <div className="space-y-12">
@@ -64,13 +70,13 @@ export default function ContatoPage() {
           <div>
             <h3 className="font-semibold text-ccmov-darkBlue mb-1">Endereço:</h3>
             <p className="text-ccmov-text">Rua Humberto I, 440<br />Vila Mariana, São Paulo - SP<br />CEP: 04018-031</p>
-            {/* Google Maps Embed */}
-            <div className="mt-4 w-full h-80 md:h-96 rounded-md overflow-hidden shadow-lg"> {/* Increased height and added shadow */}
+            {/* OpenStreetMap Embed */}
+            <div className="mt-4 w-full h-80 md:h-96 rounded-md overflow-hidden shadow-lg">
               <iframe
-                src={googleMapsEmbedUrl}
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
+                src={openStreetMapEmbedUrl}
                 allowFullScreen={true}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
