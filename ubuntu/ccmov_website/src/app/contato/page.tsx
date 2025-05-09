@@ -39,7 +39,7 @@ const FormField = ({ label, type = 'text', name, placeholder, required = false, 
 
 export default function ContatoPage() {
   // NOTE: This form is for visual purposes only in a static export.
-  // For actual submission, backend functionality (e.g., using an API route or a third-party service) is required.
+  // For actual submission, backend functionality (e.g., an API route or a third-party service) is required.
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     alert('Formulário enviado (simulação)! Para funcionalidade real, é necessário implementar o backend.');
@@ -47,14 +47,22 @@ export default function ContatoPage() {
   };
 
   // OpenStreetMap Embed URL for Rua Humberto I, 440, Vila Mariana, São Paulo - SP
-  // Coordinates approx: Lat: -23.5841, Lon: -46.6351
-  const osmLat = -23.5841;
-  const osmLon = -46.6351;
-  const osmZoom = 17; // Zoom level, 18 is closer, 16 is further
-  // Calculate bounding box for a reasonable view around the marker
-  const delta = 0.004; // Adjust for desired view area
-  const osmBbox = `${osmLon - delta},${osmLat - delta / 2},${osmLon + delta},${osmLat + delta / 2}`;
-  const openStreetMapEmbedUrl = `https://www.openstreetmap.org/export/embed.html?bbox=${osmBbox}&layer=mapnik&marker=${osmLat},${osmLon}`;
+  // Coordinates obtained from OpenStreetMap search: Lat: -23.588261, Lon: -46.640033
+  const osmLat = -23.588261;
+  const osmLon = -46.640033;
+  const osmZoom = 17; // Zoom level for the map view (higher is closer)
+
+  // Define the bounding box for the iframe view. This creates a small window around the marker.
+  // The values are: min Longitude, min Latitude, max Longitude, max Latitude
+  const delta = 0.004; // Determines the extent of the map view around the marker
+  const bbox = [
+    osmLon - delta / 2, // min Longitude
+    osmLat - delta,   // min Latitude
+    osmLon + delta / 2, // max Longitude
+    osmLat + delta    // max Latitude
+  ].join(',');
+
+  const openStreetMapEmbedUrl = `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${osmLat},${osmLon}`;
 
   return (
     <div className="space-y-12">
