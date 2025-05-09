@@ -7,7 +7,7 @@ const scheduleData = {
     { time: '09:00', activity: 'Pilates' },
     { time: '10:00', activity: 'Pilates' },
     { time: '17:00', activity: 'Pilates' },
-    { time: '17:00', activity: 'Dança de Salão <span className="text-xs text-gray-500">(Iniciado)</span>' },
+    { time: '17:00', activity: 'Dança de Salão' <span className="text-xs text-gray-500"> '(Iniciado)'</span>' },
     { time: '18:00', activity: 'Pilates' },
     { time: '18:00', activity: 'Tango <span className="text-xs text-gray-500">(Iniciante)</span>' },
     { time: '18:00', activity: 'Dança do Ventre <span className="text-xs text-gray-500">(Iniciante)</span>' },
