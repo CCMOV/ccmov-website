@@ -1,0 +1,6 @@
+[build]
+  command = "npm run build" # Se você usa pnpm como seu gerenciador de pacotes principal e é o comando que você configurou no Netlify, use "pnpm run build"
+  publish = ".next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
