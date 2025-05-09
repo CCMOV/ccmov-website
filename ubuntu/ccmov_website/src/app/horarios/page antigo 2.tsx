@@ -88,24 +88,10 @@ const daysOfWeek: { key: DayKey; name: string }[] = [
   { key: 'thursday', name: 'Quinta' },
   { key: 'friday', name: 'Sexta' },
   { key: 'saturday', name: 'Sábado' },
-  // Sunday is omitted from the table header in the original code, so we keep it that way.
+  { key: 'sunday', name: 'Domingo' },
 ];
 
-// Function to render activity text with parentheses styled
-const renderActivityText = (activity: string) => {
-  const parts = activity.split(/(\([^)]*\))/g); // Split and capture content in parentheses
-  return parts.map((part, index) => {
-    if (part.startsWith('(') && part.endsWith(')')) {
-      return <span key={index} className="text-gray-500">{part}</span>;
-    }
-    return part;
-  });
-};
-
 export default function HorariosPage() {
-  // Get all unique time slots from the scheduleData and sort them
-  const allTimeSlots = [...new Set(Object.values(scheduleData).flat().map(item => item.time))].sort();
-
   return (
     <div className="space-y-12">
       <section className="text-center pt-8 pb-12 bg-gradient-to-b from-ccmov-orange/10 to-white">
@@ -120,27 +106,29 @@ export default function HorariosPage() {
             <thead className="bg-ccmov-darkBlue text-white">
               <tr>
                 <th className="py-3 px-4 text-left font-semibold">Horário</th>
-                {daysOfWeek.map(day => (
+                {daysOfWeek.slice(0, 6).map(day => (
                   <th key={day.key} className="py-3 px-4 text-left font-semibold">{day.name}</th>
                 ))}
               </tr>
             </thead>
             <tbody className="text-ccmov-text">
-              {allTimeSlots.map(time => (
-                <tr key={time} className="border-b border-gray-200 hover:bg-gray-50">
-                  <td className="py-3 px-4 font-medium">{time}</td>
-                  {daysOfWeek.map(day => {
-                    const entries = scheduleData[day.key]?.filter(entry => entry.time === time) || [];
-                    return (
-                      <td key={`${day.key}-${time}`} className="text-sm py-3 px-4 space-y-1">
-                        {entries.map((entry, i) => (
-                          <div key={i}>{renderActivityText(entry.activity)}</div>
-                        ))}
-                      </td>
-                    );
-                  })}
-                </tr>
-              ))}
+              {[...new Set(Object.values(scheduleData).flat().map(item => item.time))]
+                .sort()
+                .map(time => (
+                  <tr key={time} className="border-b border-gray-200 hover:bg-gray-50">
+                    <td className="py-3 px-4 font-medium">{time}</td>
+                    {daysOfWeek.slice(0, 6).map(day => {
+                      const entries = scheduleData[day.key].filter(entry => entry.time === time);
+                      return (
+                        <td key={day.key} className="text-sm py-3 px-4 space-y-1">
+                          {entries.map((entry, i) => (
+                            <div key={i}>{entry.activity}</div>
+                          ))}
+                        </td>
+                      );
+                    })}
+                  </tr>
+                ))}
             </tbody>
           </table>
         </div>
@@ -148,4 +136,3 @@ export default function HorariosPage() {
     </div>
   );
 }
-
