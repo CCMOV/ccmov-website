@@ -10,7 +10,7 @@ export default function HomePage() {
           {/* Optional: Add a subtle background pattern or image related to dance/movement */}
         </div>
         <div className="relative z-10 p-6">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 animate-fade-in-down">Bem-vindo à CCMOV!</h1>
+          <h1 className="text-4xl md:text-6xl font-bold mb-4 animate-fade-in-down">Bem-vindo(a) à CCMOV!</h1>
           <p className="text-xl md:text-2xl mb-8 animate-fade-in-up">O seu espaço de Dança e Pilates na Vila Mariana. Aqui você se move!</p>
           <Link href="/aulas" className="bg-white text-ccmov-darkBlue font-semibold py-3 px-6 rounded-full hover:bg-opacity-90 transition duration-300 transform hover:scale-105">
             Conheça Nossas Aulas
