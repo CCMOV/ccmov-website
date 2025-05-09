@@ -47,9 +47,9 @@ export default function ContatoPage() {
   };
 
   // OpenStreetMap Embed URL for Rua Humberto I, 440, Vila Mariana, São Paulo - SP
-  // Coordinates obtained from OpenStreetMap search: Lat: -23.588261, Lon: -46.640033
-  const osmLat = -23.588261;
-  const osmLon = -46.640033;
+  // Coordinates obtained from OpenStreetMap search: Lat: -23.594444, Lon: -46.652136
+  const osmLat = -23.594444;
+  const osmLon = -46.652136;
   const osmZoom = 17; // Zoom level for the map view (higher is closer)
 
   // Define the bounding box for the iframe view. This creates a small window around the marker.
@@ -93,15 +93,15 @@ export default function ContatoPage() {
           </div>
           <div>
             <h3 className="font-semibold text-ccmov-darkBlue mb-1">Telefone:</h3>
-            <p className="text-ccmov-text">[Seu Telefone Aqui - Ex: (11) 9XXXX-XXXX]</p>
+            <p className="text-ccmov-text">(11) 95720-0359</p>
           </div>
           <div>
             <h3 className="font-semibold text-ccmov-darkBlue mb-1">Email:</h3>
-            <p className="text-ccmov-text">[Seu Email Aqui - Ex: contato@ccmov.com.br]</p>
+            <p className="text-ccmov-text">contato@ccmov.com.br</p>
           </div>
           <div>
             <h3 className="font-semibold text-ccmov-darkBlue mb-1">Horário de Funcionamento:</h3>
-            <p className="text-ccmov-text">Segunda a Sexta: 07:00 - 21:00<br />Sábado: 09:00 - 12:00<br />Domingo: Fechado</p>
+            <p className="text-ccmov-text">Segunda a Sexta: 07:00 - 22:00<br />Sábado: 09:00 - 15:00<br />Domingo: Fechado</p>
             <p className="text-xs text-gray-500 mt-1">(Horários de aula podem variar, consulte a grade)</p>
           </div>
         </div>
