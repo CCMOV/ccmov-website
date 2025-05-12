@@ -1,3 +1,6 @@
+
+'use client';
+
 import Link from "next/link";
 import Image from "next/image";
 import { Instagram, MessageCircle, Menu, X } from 'lucide-react';
