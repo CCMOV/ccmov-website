@@ -1,148 +1,86 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Grade de Aulas - CCMOV</title>
-  <style>
-    :root {
-      --cinza: #777;
-      --fundo: #f7f7f7;
-      --primaria: #333;
-      --borda: #ccc;
-    }
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      font-family: Arial, sans-serif;
-      background-color: var(--fundo);
-      padding: 1rem;
-      color: var(--primaria);
-    }
-    h1 {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-    .container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1.5rem;
-    }
-    .dia {
-      background-color: white;
-      border: 1px solid var(--borda);
-      border-radius: 10px;
-      padding: 1rem;
-      width: 100%;
-      max-width: 300px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    }
-    .dia h2 {
-      font-size: 1.25rem;
-      margin-bottom: 1rem;
-      text-align: center;
-    }
-    ul {
-      list-style: none;
-    }
-    li {
-      margin-bottom: 0.75rem;
-      font-size: 0.95rem;
-    }
-    .descricao {
-      color: var(--cinza);
-      font-size: 0.85rem;
-      margin-left: 4px;
-    }
-    @media (max-width: 600px) {
-      .dia {
-        width: 100%;
-        max-width: 100%;
-      }
-    }
-  </style>
-</head>
-<body>
-  <h1>Grade de Aulas</h1>
-  <div class="container">
-    <div class="dia">
-      <h2>Segunda</h2>
-      <ul>
-        <li>07:00 Pilates</li>
-        <li>08:00 Pilates</li>
-        <li>09:00 Pilates</li>
-        <li>10:00 Pilates</li>
-        <li>17:00 Pilates <span class="descricao">Dança de Salão (Iniciado)</span></li>
-        <li>18:00 Pilates <span class="descricao">Tango (Iniciante), Dança do Ventre (Iniciante)</span></li>
-        <li>19:00 Pilates <span class="descricao">Sertanejo (Iniciante), Dança do Ventre (Básico I)</span></li>
-        <li>20:00 Pilates <span class="descricao">Zouk (Iniciante)</span></li>
-      </ul>
+export default function HorariosPage() {
+  const schedule = {
+    Segunda: [
+      { time: "07:00", activity: "Pilates" },
+      { time: "08:00", activity: "Pilates" },
+      { time: "09:00", activity: "Pilates" },
+      { time: "10:00", activity: "Pilates" },
+      { time: "17:00", activity: "Pilates | Dança de Salão", style: "(Iniciado)" },
+      { time: "18:00", activity: "Pilates | Tango | Dança do Ventre", style: "(Iniciante)" },
+      { time: "19:00", activity: "Pilates | Sertanejo | Dança do Ventre", style: "(Iniciante / Básico I)" },
+      { time: "20:00", activity: "Pilates | Zouk", style: "(Iniciante)" },
+    ],
+    Terça: [
+      { time: "07:00", activity: "Pilates" },
+      { time: "08:00", activity: "Pilates" },
+      { time: "09:00", activity: "Pilates" },
+      { time: "10:00", activity: "Pilates" },
+      { time: "17:00", activity: "Pilates | Dança de Salão", style: "(Iniciante)" },
+      { time: "18:00", activity: "Pilates | Salsa | Dança do Ventre", style: "(Iniciante)" },
+      { time: "19:00", activity: "Pilates | Bachata | Dança do Ventre", style: "(Iniciado / Básico I)" },
+      { time: "20:00", activity: "Pilates | Tango", style: "(Iniciante)" },
+      { time: "21:00", activity: "Vals e Milonga", style: "(Iniciante)" },
+    ],
+    Quarta: [
+      { time: "07:00", activity: "Pilates" },
+      { time: "08:00", activity: "Pilates" },
+      { time: "09:00", activity: "Pilates" },
+      { time: "10:00", activity: "Pilates" },
+      { time: "17:00", activity: "Pilates" },
+      { time: "18:00", activity: "Pilates | Forró | Ballet", style: "(Iniciante / Infantil)" },
+      { time: "19:00", activity: "Pilates | Samba de Gafieira", style: "(Iniciado)" },
+      { time: "20:00", activity: "Pilates | Bolero", style: "(Intermediário)" },
+      { time: "21:00", activity: "Tango", style: "(Intermediário)" },
+    ],
+    Quinta: [
+      { time: "07:00", activity: "Pilates" },
+      { time: "08:00", activity: "Pilates" },
+      { time: "09:00", activity: "Pilates" },
+      { time: "10:00", activity: "Pilates" },
+      { time: "17:00", activity: "Pilates | Bachata e Forró", style: "(Iniciado)" },
+      { time: "18:00", activity: "Pilates | Bolero", style: "(Intermediário)" },
+      { time: "19:00", activity: "Pilates | Samba", style: "(Iniciante)" },
+      { time: "20:00", activity: "Pilates" },
+    ],
+    Sexta: [
+      { time: "07:00", activity: "Pilates" },
+      { time: "08:00", activity: "Pilates" },
+      { time: "09:00", activity: "Pilates" },
+      { time: "10:00", activity: "Pilates" },
+      { time: "17:00", activity: "Pilates" },
+      { time: "18:00", activity: "Pilates" },
+      { time: "19:00", activity: "Pilates" },
+      { time: "20:00", activity: "Pilates" },
+    ],
+    Sábado: [
+      { time: "13:00", activity: "Samba de Gafieira", style: "(Iniciante)" },
+      { time: "14:00", activity: "Zouk e Forró", style: "(Iniciante)" },
+    ],
+  };
+
+  return (
+    <div className="p-4 sm:p-8">
+      <h1 className="text-3xl font-bold text-center mb-8">Horários das Aulas</h1>
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {Object.entries(schedule).map(([day, items]) => (
+          <div key={day} className="bg-white rounded-2xl shadow p-4">
+            <h2 className="text-xl font-semibold mb-4 text-blue-700">{day}</h2>
+            <ul className="space-y-2">
+              {items.map(({ time, activity, style }, idx) => (
+                <li key={idx} className="flex justify-between border-b pb-1">
+                  <span className="font-medium">{time}</span>
+                  <span className="text-right">
+                    {activity}
+                    {style && (
+                      <span className="ml-1 text-gray-500 text-sm font-normal"> {style}</span>
+                    )}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
     </div>
-    <div class="dia">
-      <h2>Terça</h2>
-      <ul>
-        <li>07:00 Pilates</li>
-        <li>08:00 Pilates</li>
-        <li>09:00 Pilates</li>
-        <li>10:00 Pilates</li>
-        <li>17:00 Pilates <span class="descricao">Dança de Salão (Iniciante)</span></li>
-        <li>18:00 Pilates <span class="descricao">Salsa (Iniciante), Dança do Ventre (Iniciante)</span></li>
-        <li>19:00 Pilates <span class="descricao">Bachata (Iniciado), Dança do Ventre (Básico I), Zumba</span></li>
-        <li>20:00 Pilates <span class="descricao">Tango (Iniciante)</span></li>
-        <li><span class="descricao">21:00 Vals e Milonga (Iniciante)</span></li>
-      </ul>
-    </div>
-    <div class="dia">
-      <h2>Quarta</h2>
-      <ul>
-        <li>07:00 Pilates</li>
-        <li>08:00 Pilates</li>
-        <li>09:00 Pilates</li>
-        <li>10:00 Pilates</li>
-        <li>17:00 Pilates</li>
-        <li>18:00 Pilates <span class="descricao">Forró (Iniciante), Ballet (Infantil)</span></li>
-        <li>19:00 Pilates <span class="descricao">Samba de Gafieira (Iniciado)</span></li>
-        <li>20:00 Pilates <span class="descricao">Bolero (Intermediário)</span></li>
-        <li><span class="descricao">21:00 Tango (Intermediário)</span></li>
-      </ul>
-    </div>
-    <div class="dia">
-      <h2>Quinta</h2>
-      <ul>
-        <li>07:00 Pilates</li>
-        <li>08:00 Pilates</li>
-        <li>09:00 Pilates</li>
-        <li>10:00 Pilates</li>
-        <li>17:00 Pilates <span class="descricao">Bachata e Forró (Iniciado)</span></li>
-        <li>18:00 Pilates <span class="descricao">Bolero (Intermediário)</span></li>
-        <li>19:00 Pilates <span class="descricao">Samba (Iniciante)</span></li>
-        <li>20:00 Pilates</li>
-      </ul>
-    </div>
-    <div class="dia">
-      <h2>Sexta</h2>
-      <ul>
-        <li>07:00 Pilates</li>
-        <li>08:00 Pilates</li>
-        <li>09:00 Pilates</li>
-        <li>10:00 Pilates</li>
-        <li>17:00 Pilates</li>
-        <li>18:00 Pilates</li>
-        <li>19:00 Pilates</li>
-        <li>20:00 Pilates</li>
-      </ul>
-    </div>
-    <div class="dia">
-      <h2>Sábado</h2>
-      <ul>
-        <li><span class="descricao">13:00 Samba de Gafieira (Iniciante)</span></li>
-        <li><span class="descricao">14:00 Zouk e Forró (Iniciante)</span></li>
-      </ul>
-    </div>
-  </div>
-</body>
-</html>
+  );
+}
