@@ -84,11 +84,11 @@ const scheduleData = {
 type DayKey = keyof typeof scheduleData;
 
 const daysOfWeek: { key: DayKey; name: string }[] = [
-  { key: 'monday', name: 'Segunda' },
-  { key: 'tuesday', name: 'Terça' },
-  { key: 'wednesday', name: 'Quarta' },
-  { key: 'thursday', name: 'Quinta' },
-  { key: 'friday', name: 'Sexta' },
+  { key: 'monday', name: 'Segunda-feira' },
+  { key: 'tuesday', name: 'Terça-feira' },
+  { key: 'wednesday', name: 'Quarta-feira' },
+  { key: 'thursday', name: 'Quinta-feira' },
+  { key: 'friday', name: 'Sexta-feira' },
   { key: 'saturday', name: 'Sábado' },
   { key: 'sunday', name: 'Domingo' },
 ];
