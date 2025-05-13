@@ -1,3 +1,4 @@
+'use client';
 import React, { useState, useEffect } from 'react';
 
 const scheduleData = {
@@ -77,7 +78,7 @@ const scheduleData = {
     { time: '13:00', activity: 'Samba de Gafieira (Iniciante)' },
     { time: '14:00', activity: 'Zouk e Forró (Iniciante)' },
   ],
-  sunday: [],
+  sunday: [], // Domingo incluído para a visualização de calendário, mesmo sem aulas
 };
 
 type DayKey = keyof typeof scheduleData;
@@ -89,9 +90,10 @@ const daysOfWeek: { key: DayKey; name: string }[] = [
   { key: 'thursday', name: 'Quinta' },
   { key: 'friday', name: 'Sexta' },
   { key: 'saturday', name: 'Sábado' },
-  { key: 'sunday', name: 'Domingo' },
+  { key: 'sunday', name: 'Domingo' }, // Adicionado para o calendário desktop
 ];
 
+// Get all unique time slots from the scheduleData and sort them
 const allTimeSlots = [...new Set(Object.values(scheduleData).flat().map(item => item.time))].sort((a, b) => {
   const [hA, mA] = a.split(':').map(Number);
   const [hB, mB] = b.split(':').map(Number);
@@ -99,8 +101,9 @@ const allTimeSlots = [...new Set(Object.values(scheduleData).flat().map(item => 
   return mA - mB;
 });
 
+// Function to render activity text with parentheses styled
 const renderActivityText = (activity: string) => {
-  const parts = activity.split(/(\([^)]*\))/g);
+  const parts = activity.split(/(\([^)]*\))/g); // Split and capture content in parentheses
   return parts.map((part, index) => {
     if (part && part.startsWith('(') && part.endsWith(')')) {
       return <span key={index} className="text-xs text-gray-500">{part}</span>;
@@ -109,64 +112,85 @@ const renderActivityText = (activity: string) => {
   });
 };
 
-// --- Mobile View Component (Accordion Style) ---
+// --- Mobile View Component ---
 const MobileScheduleView = () => {
-  const [openDayKey, setOpenDayKey] = useState<DayKey | null>('monday'); // Start with Monday open
+  const [selectedDay, setSelectedDay] = useState<DayKey>('monday');
+  const [isBottomSheetOpen, setIsBottomSheetOpen] = useState(false);
+
   const mobileDaysOrder: DayKey[] = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
 
-  const toggleDay = (dayKey: DayKey) => {
-    setOpenDayKey(prevOpenDayKey => (prevOpenDayKey === dayKey ? null : dayKey));
+  const handleDaySelect = (day: DayKey) => {
+    setSelectedDay(day);
+    setIsBottomSheetOpen(false);
   };
 
-  return (
-    <div className="container mx-auto px-4 pb-8 space-y-3">
-      {mobileDaysOrder.map(dayKey => {
-        const dayObject = daysOfWeek.find(d => d.key === dayKey);
-        const activities = scheduleData[dayKey] || [];
-        const isOpen = openDayKey === dayKey;
+  const currentDayActivities = scheduleData[selectedDay] || [];
+  const currentDayName = daysOfWeek.find(d => d.key === selectedDay)?.name || 'Dia';
 
-        return (
-          <div key={dayKey} className="border border-gray-200 rounded-lg shadow-sm overflow-hidden">
-            <button
-              onClick={() => toggleDay(dayKey)}
-              className="w-full flex justify-between items-center p-4 bg-ccmov-orange/10 hover:bg-ccmov-orange/20 transition-colors focus:outline-none"
-            >
-              <span className="text-lg font-semibold text-ccmov-darkBlue">{dayObject?.name}</span>
-              <svg 
-                xmlns="http://www.w3.org/2000/svg" 
-                className={`h-6 w-6 text-ccmov-orange transform transition-transform duration-200 ${isOpen ? 'rotate-180' : 'rotate-0'}`}
-                fill="none" 
-                viewBox="0 0 24 24" 
-                stroke="currentColor"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
-            {isOpen && (
-              <div className="p-4 bg-white">
-                {activities.length > 0 ? (
-                  <ul className="space-y-3">
-                    {activities.sort((a,b) => a.time.localeCompare(b.time)).map((entry, i) => (
-                      <li key={i} className="p-3 bg-gray-50 rounded-md shadow-sm">
-                        <p className="text-ccmov-darkBlue font-medium">{entry.time}</p>
-                        <p className="text-ccmov-text text-sm">{renderActivityText(entry.activity)}</p>
-                      </li>
-                    ))}
-                  </ul>
-                ) : (
-                  <p className="text-center text-ccmov-text py-4">Nenhuma atividade para {dayObject?.name}.</p>
-                )}
-              </div>
-            )}
+  return (
+    <div className="container mx-auto px-4 pb-8">
+      <div className="my-6 text-center">
+        <button
+          onClick={() => setIsBottomSheetOpen(true)}
+          className="bg-ccmov-orange text-white px-6 py-3 rounded-lg shadow-md text-lg font-semibold flex items-center justify-center mx-auto"
+        >
+          {currentDayName}
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+            <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+          </svg>
+        </button>
+      </div>
+
+      {currentDayActivities.length > 0 ? (
+        <ul className="space-y-4">
+          {currentDayActivities.sort((a,b) => a.time.localeCompare(b.time)).map((entry, i) => (
+            <li key={i} className="bg-white p-4 rounded-lg shadow hover:shadow-lg transition-shadow">
+              <p className="text-ccmov-darkBlue font-semibold text-lg">{entry.time}</p>
+              <p className="text-ccmov-text text-md">{renderActivityText(entry.activity)}</p>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p className="text-center text-ccmov-text py-8">Nenhuma atividade para {currentDayName}.</p>
+      )}
+
+      {isBottomSheetOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-40 flex items-end" onClick={() => setIsBottomSheetOpen(false)}>
+          <div className="bg-white w-full rounded-t-2xl p-6 shadow-xl" onClick={(e) => e.stopPropagation()}>
+            <div className="flex justify-between items-center mb-4">
+                <h3 className="text-xl font-semibold text-ccmov-darkBlue">Selecione o Dia</h3>
+                <button onClick={() => setIsBottomSheetOpen(false)} className="text-gray-500 hover:text-gray-700">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <ul className="space-y-2">
+              {mobileDaysOrder.map(dayKey => {
+                const dayObject = daysOfWeek.find(d => d.key === dayKey);
+                return (
+                  <li key={dayKey}>
+                    <button
+                      onClick={() => handleDaySelect(dayKey)}
+                      className={`w-full text-left p-3 rounded-md font-medium transition-colors
+                        ${selectedDay === dayKey 
+                          ? 'bg-ccmov-orange text-white' 
+                          : 'hover:bg-ccmov-orange/10 text-ccmov-text'}`}
+                    >
+                      {dayObject?.name}
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
           </div>
-        );
-      })}
+        </div>
+      )}
     </div>
   );
 };
 
-
-// --- Desktop View Component (Unchanged) ---
+// --- Desktop View Component ---
 const DesktopScheduleView = () => {
   const desktopDaysOrder: DayKey[] = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
 
@@ -198,7 +222,7 @@ const DesktopScheduleView = () => {
                           <p className="font-semibold text-ccmov-darkBlue text-xs md:text-sm">{renderActivityText(entry.activity)}</p>
                         </div>
                       ))}
-                      {entries.length === 0 && <div className="h-full w-full"></div>} 
+                      {entries.length === 0 && <div className="h-full w-full"></div>} {/* Placeholder for empty cells */}
                     </td>
                   );
                 })}
@@ -211,7 +235,7 @@ const DesktopScheduleView = () => {
   );
 };
 
-// --- Main Page Component (Unchanged) ---
+// --- Main Page Component ---
 export default function HorariosPage() {
   const [isMobile, setIsMobile] = useState(false);
 
@@ -236,4 +260,5 @@ export default function HorariosPage() {
     </div>
   );
 }
+
 
