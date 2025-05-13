@@ -1,86 +1,120 @@
-export default function HorariosPage() {
-  const schedule = {
-    Segunda: [
-      { time: "07:00", activity: "Pilates" },
-      { time: "08:00", activity: "Pilates" },
-      { time: "09:00", activity: "Pilates" },
-      { time: "10:00", activity: "Pilates" },
-      { time: "17:00", activity: "Pilates | Dança de Salão", style: "(Iniciado)" },
-      { time: "18:00", activity: "Pilates | Tango | Dança do Ventre", style: "(Iniciante)" },
-      { time: "19:00", activity: "Pilates | Sertanejo | Dança do Ventre", style: "(Iniciante / Básico I)" },
-      { time: "20:00", activity: "Pilates | Zouk", style: "(Iniciante)" },
-    ],
-    Terça: [
-      { time: "07:00", activity: "Pilates" },
-      { time: "08:00", activity: "Pilates" },
-      { time: "09:00", activity: "Pilates" },
-      { time: "10:00", activity: "Pilates" },
-      { time: "17:00", activity: "Pilates | Dança de Salão", style: "(Iniciante)" },
-      { time: "18:00", activity: "Pilates | Salsa | Dança do Ventre", style: "(Iniciante)" },
-      { time: "19:00", activity: "Pilates | Bachata | Dança do Ventre", style: "(Iniciado / Básico I)" },
-      { time: "20:00", activity: "Pilates | Tango", style: "(Iniciante)" },
-      { time: "21:00", activity: "Vals e Milonga", style: "(Iniciante)" },
-    ],
-    Quarta: [
-      { time: "07:00", activity: "Pilates" },
-      { time: "08:00", activity: "Pilates" },
-      { time: "09:00", activity: "Pilates" },
-      { time: "10:00", activity: "Pilates" },
-      { time: "17:00", activity: "Pilates" },
-      { time: "18:00", activity: "Pilates | Forró | Ballet", style: "(Iniciante / Infantil)" },
-      { time: "19:00", activity: "Pilates | Samba de Gafieira", style: "(Iniciado)" },
-      { time: "20:00", activity: "Pilates | Bolero", style: "(Intermediário)" },
-      { time: "21:00", activity: "Tango", style: "(Intermediário)" },
-    ],
-    Quinta: [
-      { time: "07:00", activity: "Pilates" },
-      { time: "08:00", activity: "Pilates" },
-      { time: "09:00", activity: "Pilates" },
-      { time: "10:00", activity: "Pilates" },
-      { time: "17:00", activity: "Pilates | Bachata e Forró", style: "(Iniciado)" },
-      { time: "18:00", activity: "Pilates | Bolero", style: "(Intermediário)" },
-      { time: "19:00", activity: "Pilates | Samba", style: "(Iniciante)" },
-      { time: "20:00", activity: "Pilates" },
-    ],
-    Sexta: [
-      { time: "07:00", activity: "Pilates" },
-      { time: "08:00", activity: "Pilates" },
-      { time: "09:00", activity: "Pilates" },
-      { time: "10:00", activity: "Pilates" },
-      { time: "17:00", activity: "Pilates" },
-      { time: "18:00", activity: "Pilates" },
-      { time: "19:00", activity: "Pilates" },
-      { time: "20:00", activity: "Pilates" },
-    ],
-    Sábado: [
-      { time: "13:00", activity: "Samba de Gafieira", style: "(Iniciante)" },
-      { time: "14:00", activity: "Zouk e Forró", style: "(Iniciante)" },
-    ],
-  };
+// src/app/horarios/page.tsx
 
+"use client";
+
+import React from "react";
+
+const schedule = {
+  Segunda: {
+    "07:00": ["Pilates"],
+    "08:00": ["Pilates"],
+    "09:00": ["Pilates"],
+    "10:00": ["Pilates"],
+    "17:00": ["Pilates", "Dança de Salão (Iniciado)"],
+    "18:00": ["Pilates", "Tango (Iniciante)", "Dança do Ventre (Iniciante)"],
+    "19:00": ["Pilates", "Sertanejo (Iniciante)", "Dança do Ventre (Básico I)"],
+    "20:00": ["Pilates", "Zouk (Iniciante)"],
+  },
+  Terça: {
+    "07:00": ["Pilates"],
+    "08:00": ["Pilates"],
+    "09:00": ["Pilates"],
+    "10:00": ["Pilates"],
+    "17:00": ["Pilates", "Dança de Salão (Iniciante)"],
+    "18:00": ["Pilates", "Salsa (Iniciante)", "Dança do Ventre (Iniciante)"],
+    "19:00": ["Pilates", "Bachata (Iniciado)", "Dança do Ventre (Básico I)"],
+    "20:00": ["Pilates", "Tango (Iniciante)"],
+    "21:00": ["Vals e Milonga (Iniciante)"],
+  },
+  Quarta: {
+    "07:00": ["Pilates"],
+    "08:00": ["Pilates"],
+    "09:00": ["Pilates"],
+    "10:00": ["Pilates"],
+    "17:00": ["Pilates"],
+    "18:00": ["Pilates", "Forró (Iniciante)", "Ballet (Infantil)"],
+    "19:00": ["Pilates", "Samba de Gafieira (Iniciado)"],
+    "20:00": ["Pilates", "Bolero (Intermediário)"],
+    "21:00": ["Tango (Intermediário)"],
+  },
+  Quinta: {
+    "07:00": ["Pilates"],
+    "08:00": ["Pilates"],
+    "09:00": ["Pilates"],
+    "10:00": ["Pilates"],
+    "17:00": ["Pilates", "Bachata e Forró (Iniciado)"],
+    "18:00": ["Pilates", "Bolero (Intermediário)"],
+    "19:00": ["Pilates", "Samba (Iniciante)"],
+    "20:00": ["Pilates"],
+    "21:00": [],
+  },
+  Sexta: {
+    "07:00": ["Pilates"],
+    "08:00": ["Pilates"],
+    "09:00": ["Pilates"],
+    "10:00": ["Pilates"],
+    "17:00": ["Pilates"],
+    "18:00": ["Pilates"],
+    "19:00": ["Pilates"],
+    "20:00": ["Pilates"],
+    "21:00": [],
+  },
+  Sábado: {
+    "13:00": ["Samba de Gafieira (Iniciante)"],
+    "14:00": ["Zouk e Forró (Iniciante)"],
+  },
+};
+
+const HorariosPage = () => {
   return (
-    <div className="p-4 sm:p-8">
-      <h1 className="text-3xl font-bold text-center mb-8">Horários das Aulas</h1>
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {Object.entries(schedule).map(([day, items]) => (
-          <div key={day} className="bg-white rounded-2xl shadow p-4">
-            <h2 className="text-xl font-semibold mb-4 text-blue-700">{day}</h2>
-            <ul className="space-y-2">
-              {items.map(({ time, activity, style }, idx) => (
-                <li key={idx} className="flex justify-between border-b pb-1">
-                  <span className="font-medium">{time}</span>
-                  <span className="text-right">
-                    {activity}
-                    {style && (
-                      <span className="ml-1 text-gray-500 text-sm font-normal"> {style}</span>
+    <div className="min-h-screen bg-white px-4 py-8 sm:px-6 lg:px-16">
+      <h1 className="text-3xl font-bold text-center mb-8 text-purple-800">
+        Agenda de Aulas
+      </h1>
+      <div className="space-y-8">
+        {Object.entries(schedule).map(([dia, horarios]) => (
+          <div key={dia}>
+            <h2 className="text-2xl font-semibold text-purple-700 mb-4">
+              {dia}
+            </h2>
+            <div className="space-y-2">
+              {Object.entries(horarios).map(([hora, aulas]) => (
+                <div
+                  key={hora}
+                  className="bg-purple-50 rounded-xl p-4 shadow-sm border border-purple-100"
+                >
+                  <p className="font-semibold text-purple-600">{hora}</p>
+                  <ul className="ml-4 list-disc text-gray-800">
+                    {aulas.length > 0 ? (
+                      aulas.map((aula, idx) => {
+                        const match = aula.match(/(.*?)(\s\((.*?)\))?$/);
+                        const nome = match?.[1] || aula;
+                        const nivel = match?.[3];
+
+                        return (
+                          <li key={idx}>
+                            {nome}
+                            {nivel && (
+                              <span className="text-sm text-gray-500">
+                                {" "}
+                                ({nivel})
+                              </span>
+                            )}
+                          </li>
+                        );
+                      })
+                    ) : (
+                      <li className="text-gray-400 italic">Sem aula</li>
                     )}
-                  </span>
-                </li>
+                  </ul>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
         ))}
       </div>
     </div>
   );
-}
+};
+
+export default HorariosPage;
